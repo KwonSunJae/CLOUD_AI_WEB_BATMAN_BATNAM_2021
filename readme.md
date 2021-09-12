@@ -2,7 +2,7 @@
 
 
 # Project name or Logo
-![Logo](https://ovenapp.io/view/0eAWhm4wHe9D9ug8H0u1UebkVX4mWE4n/Bsn3Y)
+![Logo](https://drive.google.com/file/d/1FK6bebvuiAKMScIKj8wwLT7ICzmw7GJW/view?usp=sharing)
 
 프로젝트명 또는 프로젝트 로고 이미지 **(택1)**
 

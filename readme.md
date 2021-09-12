@@ -2,7 +2,7 @@
 
 
 # Project name or Logo
-![Logo](https://drive.google.com/file/d/1FK6bebvuiAKMScIKj8wwLT7ICzmw7GJW/view?usp=sharing)
+![Logo](https://github.com/osamhack2021/AI_CLOUD_WEB_BATMAN_BATNAM/blob/master/logo.png?raw=true)
 
 프로젝트명 또는 프로젝트 로고 이미지 **(택1)**
 

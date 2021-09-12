@@ -2,7 +2,7 @@
 
 
 # Project name or Logo
-![Logo](https://logosbynick.com/wp-content/uploads/2018/03/final-logo-example.png)
+![Logo](https://ovenapp.io/view/0eAWhm4wHe9D9ug8H0u1UebkVX4mWE4n/Bsn3Y)
 
 프로젝트명 또는 프로젝트 로고 이미지 **(택1)**
 

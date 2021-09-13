@@ -11,12 +11,12 @@ output_layers = [layer_names[i[0] - 1] for i in net.getUnconnectedOutLayers()]
 colors = np.random.uniform(0, 255, size=(len(classes), 3))
 
 #Load Image
-image = cv2.imread("test.jpg")
-image = cv2.resize(image, None, fx=0.5, fy=0.5)
+image = cv2.imread("test2.jpg")
+image = cv2.resize(image, None, fx=0.3, fy=0.3)
 height, width, channels = image.shape
 
 #Detecting objects
-blob = cv2.dnn.blobFromImage(img, 0.00392, (416, 416), (0, 0, 0), True, crop=False)
+blob = cv2.dnn.blobFromImage(image, 0.00392, (416, 416), (0, 0, 0), True, crop=False)
 net.setInput(blob)
 outs = net.forward(output_layers)
 

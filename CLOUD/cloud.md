@@ -15,3 +15,7 @@ https://github.com/foschmitz/yolo-python-rtsp
 
 bird Detection 
 https://medium.com/analytics-vidhya/object-detection-zoo-part-2-birds-detection-ac578a3bb3a1
+
+
+bird dataset
+https://drive.google.com/file/d/1hbzc_P1FuxMkcabkgn9ZKinBwW683j45/view

@@ -10,3 +10,6 @@ node js rtsp streaming
 https://siksik1117.tistory.com/10
 
 yolo v3 django rtsp streaming https://github.com/tranleanh/Yolov3-Django-Streaming
+
+bird Detection 
+https://medium.com/analytics-vidhya/object-detection-zoo-part-2-birds-detection-ac578a3bb3a1

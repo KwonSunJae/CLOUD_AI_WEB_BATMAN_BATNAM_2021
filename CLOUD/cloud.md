@@ -8,3 +8,5 @@ Reference
 
 node js rtsp streaming
 https://siksik1117.tistory.com/10
+
+yolo v3 django rtsp streaming https://github.com/tranleanh/Yolov3-Django-Streaming

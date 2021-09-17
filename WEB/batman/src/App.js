@@ -1,16 +1,16 @@
 import React from "react";
 
-import Header from "./component/Header";
-import DetectCtrl from "./component/DetectCtrl";
-import AitStripBlock from "./component/AirstripBlock";
+import Header from "./component/common/Header";
+import Footer from "./component/common/Footer";
+import HomeTemplateContainer from "./container/home/HomeTemplateContainer";
 
 const App = () => {
   return (
-    <div>
+    <>
       <Header />
-      <DetectCtrl />
-      <AitStripBlock />
-    </div>
+      <HomeTemplateContainer />
+      <Footer />
+    </>
   );
 };
 

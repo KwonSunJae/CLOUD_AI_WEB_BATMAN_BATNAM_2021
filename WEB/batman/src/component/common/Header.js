@@ -3,16 +3,16 @@ import styled from "styled-components";
 import oc from "open-color";
 
 const HeaderWrapper = styled.div`
-  margin-top: 3rem;
-  margin-left: 6rem;
-  margin-right: 6rem;
-  height: 10%;
+  height: 7%;
+  padding-top: 1rem;
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+
   display: flex;
   flex-flow: row wrap;
   justify-content: space-between;
   align-items: center;
 
-  padding-bottom: 1rem;
   border-bottom: 1px solid ${oc.gray[6]};
 `;
 
@@ -30,10 +30,7 @@ const StyledNavBar = styled.div`
   align-items: center;
 `;
 
-const UserCtrlWrapper = styled.div`
-  display: flex;
-  flex-flow: wrap row;
-`;
+const UserCtrlWrapper = styled.div``;
 
 const StyledButton = styled.button`
   font-size: 1rem;
@@ -60,7 +57,7 @@ const StyledButton = styled.button`
 
 const Header = () => {
   return (
-    <div>
+    <>
       <HeaderWrapper>
         <StyledLogo>BATMAN</StyledLogo>
         <StyledNavBar>
@@ -71,7 +68,7 @@ const Header = () => {
         </StyledNavBar>
         <UserCtrlWrapper>사용자정보</UserCtrlWrapper>
       </HeaderWrapper>
-    </div>
+    </>
   );
 };
 

@@ -1,0 +1,11 @@
+{
+  "name": "WEB",
+  "version": "1.0.0",
+  "main": "index.js",
+  "author": "GitJaeMin <55350092+anjm1020@users.noreply.github.com>",
+  "license": "MIT",
+  "dependencies": {
+    "create-react-app": "^4.0.3",
+    "nodemon": "^2.0.12"
+  }
+}

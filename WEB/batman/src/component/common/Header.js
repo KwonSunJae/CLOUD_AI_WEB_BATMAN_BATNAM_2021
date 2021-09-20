@@ -1,19 +1,14 @@
 import React from "react";
 import styled from "styled-components";
-import oc from "open-color";
 
 const HeaderWrapper = styled.div`
-  height: 7%;
-  padding-top: 1rem;
-  padding-left: 0.5rem;
-  padding-right: 0.5rem;
-
+  width: 10%;
+  height: 100%;
   display: flex;
-  flex-flow: row wrap;
+  flex-flow: column wrap;
   justify-content: space-between;
   align-items: center;
-
-  border-bottom: 1px solid ${oc.gray[6]};
+  background: gray;
 `;
 
 const StyledLogo = styled.div`
@@ -21,26 +16,31 @@ const StyledLogo = styled.div`
   font-size: 2rem;
   font-weight: bolder;
   letter-spacing: 0.2rem;
+  color: white;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
 `;
 
 const StyledNavBar = styled.div`
+  width: 100%;
+  flex: 1;
   display: flex;
-  flex-flow: wrap row;
-  justify-content: space-between;
+  flex-flow: wrap column;
+  justify-content: flex-start;
   align-items: center;
 `;
 
-const UserCtrlWrapper = styled.div``;
-
 const StyledButton = styled.button`
-  font-size: 1rem;
-  letter-spacing: 0.2rem;
+  width: 100%;
+  font-size: 1.25rem;
+  font-weight: 400;
   background: none;
-  color: ${oc.gray[8]};
+  color: white;
   border: none;
-  padding-top: 0.5rem;
-  padding-left: 6rem;
-  padding-right: 6rem;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
 
   -webkit-transition: font-size 0.5s ease;
   -moz-transition: font-size 0.5s ease;
@@ -48,10 +48,13 @@ const StyledButton = styled.button`
   transition: font-size 0.5s ease;
 
   &:hover {
+    color: white;
     font-size: 1.5rem;
+    cursor: pointer;
+    background: black;
   }
   & + & {
-    border-left: 1px solid black;
+    margin-top: 0.5rem;
   }
 `;
 
@@ -66,7 +69,6 @@ const Header = () => {
           <StyledButton>상황실</StyledButton>
           <StyledButton>통제실</StyledButton>
         </StyledNavBar>
-        <UserCtrlWrapper>사용자정보</UserCtrlWrapper>
       </HeaderWrapper>
     </>
   );

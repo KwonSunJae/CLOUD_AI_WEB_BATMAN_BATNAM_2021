@@ -1,8 +1,9 @@
-import {combineReducers} from 'redux';
-import grid from './grid';
+import { combineReducers } from "redux";
+
+import fullscreen from './fullscreen';
 
 const rootReducer = combineReducers({
-    grid
+    fullscreen
 });
 
 export default rootReducer;

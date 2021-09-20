@@ -1,17 +1,7 @@
-import React from "react";
-
-import Header from "./component/common/Header";
-import Footer from "./component/common/Footer";
-import HomeTemplateContainer from "./container/home/HomeTemplateContainer";
+import * as pages from "./pages";
 
 const App = () => {
-  return (
-    <>
-      <Header />
-      <HomeTemplateContainer />
-      <Footer />
-    </>
-  );
+  return pages.home();
 };
 
 export default App;

@@ -1,5 +1,7 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
+
+import StartModal from "../home/StartModal";
 
 const HeaderWrapper = styled.div`
   width: 10%;
@@ -37,6 +39,7 @@ const StyledButton = styled.button`
   background: none;
   color: white;
   border: none;
+  outline: none;
 
   display: flex;
   justify-content: center;
@@ -59,6 +62,9 @@ const StyledButton = styled.button`
 `;
 
 const Header = () => {
+  const [open, setOpen] = useState(false);
+  const onOpen = () => setOpen(true);
+  const onClose = () => setOpen(false);
   return (
     <>
       <HeaderWrapper>
@@ -68,6 +74,8 @@ const Header = () => {
           <StyledButton>통계실</StyledButton>
           <StyledButton>상황실</StyledButton>
           <StyledButton>통제실</StyledButton>
+          <StyledButton onClick={onOpen}>시작하기</StyledButton>
+          <StartModal open={open} onClose={onClose} />
         </StyledNavBar>
       </HeaderWrapper>
     </>

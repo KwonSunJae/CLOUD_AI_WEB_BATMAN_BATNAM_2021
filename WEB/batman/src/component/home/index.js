@@ -39,6 +39,9 @@ const SearchedWrapper = styled.div`
 const GraphWrapper = styled.div`
   height: 40%;
   width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 `;
 
 const home = ({ isFull, onClick }) => {

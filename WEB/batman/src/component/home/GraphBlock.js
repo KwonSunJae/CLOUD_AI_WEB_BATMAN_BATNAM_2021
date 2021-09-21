@@ -1,7 +1,9 @@
 import styled from "styled-components";
 
+import LineChart from "../common/LineChart";
+
 const Wrapper = styled.div`
-  width: 100%;
+  width: 90%;
   height: 100%;
 
   display: flex;
@@ -10,14 +12,12 @@ const Wrapper = styled.div`
 
   font-size: 3rem;
   font-weight: bolder;
-
-  background: gray;
 `;
 
 const GraphBlock = () => {
   return (
     <Wrapper>
-      <span>GRAPH BLOCK</span>
+      <LineChart />
     </Wrapper>
   );
 };

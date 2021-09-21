@@ -1,4 +1,3 @@
-import { useState } from "react";
 import InputLabel from "@mui/material/InputLabel";
 import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
@@ -11,30 +10,30 @@ const Wrapper = styled.div`
   margin-top: 0.5rem;
 `;
 
-const SelectList = () => {
-  const [line, setLine] = useState(-1);
+const SelectList = ({ width, label, value, setValue, list }) => {
   const handleChange = (event) => {
-    setLine(event.target.value);
+    setValue(event.target.value);
   };
+
+  const minWidth = width ? width : 120;
 
   return (
     <Wrapper>
-      <FormControl sx={{ m: 1, minWidth: 120 }}>
-        <InputLabel id="select-line-label">RunWay</InputLabel>
+      <FormControl sx={{ m: 1, minWidth: { minWidth } }}>
+        <InputLabel id="select-line-label">{label}</InputLabel>
         <Select
           labelId="line-name"
           id="line-item"
-          value={line}
+          value={value}
           onChange={handleChange}
           autoWidth
-          label="RunWay"
+          label={label}
         >
-          <MenuItem value={-1}>
-            <em>활주로</em>
-          </MenuItem>
-          <MenuItem value={1}>활주로 1</MenuItem>
-          <MenuItem value={2}>활주로 2</MenuItem>
-          <MenuItem value={3}>활주로 3</MenuItem>
+          {list.map((l, idx) => (
+            <MenuItem key={idx} value={l.value}>
+              {l.label}
+            </MenuItem>
+          ))}
         </Select>
       </FormControl>
     </Wrapper>

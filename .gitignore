@@ -1,6 +1,7 @@
 .venv
 .vscode
+.env
 AI/
 CLOUD/
-WEB/node_modules/
+node_modules/
 todo.md

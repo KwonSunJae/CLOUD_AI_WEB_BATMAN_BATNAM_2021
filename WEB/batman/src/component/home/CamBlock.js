@@ -91,6 +91,7 @@ const SizeCtrl = styled.button`
   background: none;
   color: gray;
   border: none;
+  outline: none;
   font-size: 1.5rem;
   font-weight: 500;
 

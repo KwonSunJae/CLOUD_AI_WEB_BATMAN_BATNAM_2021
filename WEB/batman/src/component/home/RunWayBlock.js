@@ -2,9 +2,8 @@ import React from "react";
 import styled from "styled-components";
 import { IoArrowForwardCircle } from "react-icons/io5";
 
-import SelectList from "./SelectList";
-
-import palette from "../../public/style/palette";
+import HoverTooltips from "../common/HoverTooltips";
+import RunWayList from "./RunWayList";
 
 const MainBlock = styled.div`
   height: 100%;
@@ -57,7 +56,38 @@ const SectorBlock = styled.div`
   padding: 1rem;
   padding-top: 0.5rem;
   padding-bottom: 0.5rem;
+  position: relative;
+  &:hover {
+    background: gray;
+    color: white;
+    cursor: pointer;
+  }
 `;
+
+/* 
+SECTOR COMPONENT
+N cam
+M 폭음탄
+최근 발견
+*/
+
+const SectorItem = ({ label }) => {
+  return (
+    <HoverTooltips message={label + "'s Information!"}>
+      <SectorBlock>{label}</SectorBlock>
+    </HoverTooltips>
+  );
+};
+
+const SectorBlockList = ({ list }) => {
+  return (
+    <SectorLine>
+      {list.map((l, idx) => (
+        <SectorItem key={idx} label={l} />
+      ))}
+    </SectorLine>
+  );
+};
 
 const RunWayBlock = () => {
   const renderArrow = (n) => {
@@ -68,25 +98,20 @@ const RunWayBlock = () => {
     return result;
   };
 
+  const SectorTop = ["A", "B", "C"];
+  const SectorBottom = ["D", "E", "F"];
+
   return (
     <MainBlock>
-      <SelectList />
+      <RunWayList />
       <RunWayWrapper>
-        <SectorLine>
-          <SectorBlock>SECTOR A</SectorBlock>
-          <SectorBlock>SECTOR B</SectorBlock>
-          <SectorBlock>SECTOR C</SectorBlock>
-        </SectorLine>
+        <SectorBlockList list={SectorTop.map((s) => "SECTOR " + s)} />
         <ArrowLine>
           {renderArrow(2)}
           <RunWayLabel>활주로 1</RunWayLabel>
           {renderArrow(2)}
         </ArrowLine>
-        <SectorLine>
-          <SectorBlock>SECTOR D</SectorBlock>
-          <SectorBlock>SECTOR E</SectorBlock>
-          <SectorBlock>SECTOR F</SectorBlock>
-        </SectorLine>
+        <SectorBlockList list={SectorBottom.map((s) => "SECTOR " + s)} />
       </RunWayWrapper>
     </MainBlock>
   );

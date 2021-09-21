@@ -144,7 +144,7 @@ const data = [
     time: formatDate(new Date()),
     place: "line 2/A",
     detected: "Bird",
-    result: "shoot",
+    result: "shoot ",
   },
   {
     time: formatDate(new Date()),

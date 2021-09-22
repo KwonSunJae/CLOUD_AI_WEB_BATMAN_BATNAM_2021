@@ -1,5 +1,9 @@
 ##Docker 적용방법
+
+
 https://twofootdog.tistory.com/24
+
+https://metleeha.tistory.com/entry/Kuberentes%EB%A1%9C-React%EC%95%B1-%EB%B0%B0%ED%8F%AC%ED%95%98%EA%B8%B05%EB%8B%A8%EA%B3%84
 해당 분야에 들어가서 Dockerfile을 복사시킨다. 그리고 해당conf파일을 들어가있는대로 수정한다
 
 

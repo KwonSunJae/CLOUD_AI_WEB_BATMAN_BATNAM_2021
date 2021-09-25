@@ -1,15 +1,26 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import { IoArrowForwardCircle } from "react-icons/io5";
 
+import Stack from "@mui/material/Stack";
+import Button from "@mui/material/Button";
+
 import HoverTooltips from "../common/HoverTooltips";
 import RunWayList from "./RunWayList";
+import RunWayModal from "./RunWayModal";
 
 const MainBlock = styled.div`
   height: 100%;
   width: 100%;
   display: flex;
   flex-flow: row wrap;
+`;
+
+const SiderWrapper = styled.div`
+  height: 100%;
+  display: flex;
+  flex-flow: column;
+  align-items: center;
 `;
 
 const RunWayWrapper = styled.div`
@@ -89,6 +100,19 @@ const SectorBlockList = ({ list }) => {
   );
 };
 
+const BtnGroup = ({ onClose }) => {
+  return (
+    <Stack spacing={2} direction="row">
+      <Button variant="outlined" onClick={onClose}>
+        새 활주로 생성하기
+      </Button>
+      <Button variant="outlined" onClick={onClose}>
+        취소
+      </Button>
+    </Stack>
+  );
+};
+
 const RunWayBlock = () => {
   const renderArrow = (n) => {
     const result = [];
@@ -101,9 +125,17 @@ const RunWayBlock = () => {
   const SectorTop = ["A", "B", "C"];
   const SectorBottom = ["D", "E", "F"];
 
+  const [open, setOpen] = useState(false);
+
   return (
     <MainBlock>
-      <RunWayList />
+      <SiderWrapper>
+        <RunWayList />
+        <Button variant="outlined" onClick={() => setOpen(true)}>
+          새 활주로 생성하기
+        </Button>
+        <RunWayModal open={open} onClose={() => setOpen(false)} />
+      </SiderWrapper>
       <RunWayWrapper>
         <SectorBlockList list={SectorTop.map((s) => "SECTOR " + s)} />
         <ArrowLine>

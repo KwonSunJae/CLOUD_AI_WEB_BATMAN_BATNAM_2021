@@ -11,6 +11,12 @@ export const save = async (ctx) => {
   ctx.body = _sector;
 };
 
-export const test = ctx => {
-    ctx.body = "It's a test";
-}
+export const test = (ctx) => {
+  ctx.set("Access-Control-Allow-Origin", "*");
+  ctx.set(
+    "Access-Control-Allow-Headers",
+    "Origin, X-Requested-With, Content-Type, Accept"
+  );
+  ctx.set("Access-Control-Allow-Methods", "POST, GET, PUT, DELETE, OPTIONS");
+  ctx.body = "It's a test";
+};

@@ -1,5 +1,5 @@
 import { useState } from "react";
-import SelectList from "../common/SelectList";
+import SelectList from "../common/Input/SelectList";
 
 const list = [{ value: 0, label: "RunWay" }];
 

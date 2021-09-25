@@ -11,10 +11,10 @@ const style = {
   p: 4,
 };
 
-const ModalBox = ({ children, open, onClose }) => {
+const ModalBox = ({ children, open, onClose, width }) => {
   return (
     <Modal open={open} onClose={onClose}>
-      <Box sx={style}>{children}</Box>
+      <Box sx={width ? { ...style, width: width } : style}>{children}</Box>
     </Modal>
   );
 };

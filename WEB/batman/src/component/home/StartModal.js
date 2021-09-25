@@ -6,7 +6,7 @@ import Checkbox from "@mui/material/Checkbox";
 
 import ModalBox from "../common/ModalBox";
 import RunWayList from "./RunWayList";
-import DtPicker from "../common/DtPicker";
+import DtPicker from "../common/Input/DtPicker";
 
 const FormWrapper = styled.form`
   display: flex;

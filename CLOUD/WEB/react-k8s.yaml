@@ -1,0 +1,35 @@
+kind: Deployment
+apiVersion: apps/v1
+metadata:
+  name: react-k8s
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: react-k8s
+  template:
+    metadata:
+      labels:
+        app: react-k8s
+    spec:
+      containers:
+        - name: react-k8s
+          image: docker.io/ksun4131/react-docker2
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 80
+      restartPolicy: Always
+--- 
+apiVersion: v1
+kind: Service
+metadata:
+  name: react-k8s
+spec:
+  ports:
+    - name: "8083"
+      port: 8083
+      targetPort: 80
+  selector:
+    app: react-k8s
+  type: LoadBalancer
+

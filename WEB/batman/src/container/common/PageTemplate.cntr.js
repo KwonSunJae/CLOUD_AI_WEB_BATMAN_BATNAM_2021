@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-import Header from "../common/Header";
+import HeaderCntr from "./Header.cntr";
 
 const PageWrapper = styled.div`
   width: 100%;
@@ -11,15 +11,20 @@ const PageWrapper = styled.div`
 
 const ChildrenWrapper = styled.div`
   flex: 1;
+
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-flow: column wrap;
 `;
 
-const PageTemplate = ({ children }) => {
+const PageTemplateCntr = ({ children }) => {
   return (
     <PageWrapper>
-      <Header />
+      <HeaderCntr />
       <ChildrenWrapper>{children}</ChildrenWrapper>
     </PageWrapper>
   );
 };
 
-export default PageTemplate;
+export default PageTemplateCntr;

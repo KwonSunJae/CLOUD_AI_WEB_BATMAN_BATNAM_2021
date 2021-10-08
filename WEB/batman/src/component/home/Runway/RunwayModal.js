@@ -1,11 +1,10 @@
-import { useState } from "react";
-
 import styled from "styled-components";
 import Stack from "@mui/material/Stack";
 import Button from "@mui/material/Button";
 
-import ModalBox from "../common/ModalBox";
-import TextInput from "../common/Input/TextInput";
+import ModalBox from "../../common/ModalBox";
+import TextInput from "../../common/Input/TextInput";
+import RunwayGraphic from "./RunwayGraphic";
 
 const FormWrapper = styled.form`
   display: flex;
@@ -52,26 +51,26 @@ const InputGroup = ({ form, onChange }) => {
       <TitleInputWrapper>
         <TextInput
           label="활주로 이름"
-          value={form.runway}
-          name="runway"
+          value={form.name}
+          name="name"
           onChange={onChange}
           fullWidth
         />
       </TitleInputWrapper>
       <AngleInputWrapper>
         <TextInput
-          label="방위1"
-          value={form.angle1}
-          name="angle1"
+          label="시작방위"
+          value={form.angle_start}
+          name="angle_start"
           onChange={onChange}
           isNumber
         />
       </AngleInputWrapper>
       <AngleInputWrapper>
         <TextInput
-          label="방위2"
-          value={form.angle2}
-          name="angle2"
+          label="끝방위"
+          value={form.angle_end}
+          name="angle_end"
           onChange={onChange}
           isNumber
         />
@@ -80,33 +79,30 @@ const InputGroup = ({ form, onChange }) => {
   );
 };
 
-const StartForm = ({ onClose }) => {
-  const [form, setForm] = useState({
-    runway: String,
-    angle1: Number,
-    angle2: Number,
-  });
-  const onChange = (e) => {
-    setForm({
-      ...form,
-      [e.target.name]: e.target.value,
-    });
+const StartForm = ({ onClose, form, onChange }) => {
+  const graphicForm = {
+    name: form.name,
+    angles: [form.angle_start, form.angle_end],
+    sectors: form.sectors,
   };
   return (
     <FormWrapper>
-      <span style={{ fontWeight: "bold", fontSize: "2rem" }}>BATMAN</span>
+      <span style={{ fontWeight: "bold", fontSize: "2rem" }}>
+        BATMAN : 활주로 생성
+      </span>
       <InputGroup form={form} onChange={onChange} />
+      <RunwayGraphic form={graphicForm} />
       <BtnGroup onClose={onClose} />
     </FormWrapper>
   );
 };
 
-const StartModal = ({ open, onClose }) => {
+const RunwayModal = ({ open, onClose, form, onChange }) => {
   return (
     <ModalBox open={open} onClose={onClose} width={"60vw"}>
-      <StartForm onClose={onClose} />
+      <StartForm onClose={onClose} form={form} onChange={onChange} />
     </ModalBox>
   );
 };
 
-export default StartModal;
+export default RunwayModal;

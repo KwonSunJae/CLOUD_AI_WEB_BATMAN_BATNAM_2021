@@ -4,6 +4,13 @@ import styled from "styled-components";
 import { MdNavigateBefore, MdNavigateNext } from "react-icons/md";
 import { BsFullscreen, BsFullscreenExit } from "react-icons/bs";
 
+const CamBlockWrapper = styled.div`
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
+
 const MainBlock = styled.div`
   height: 100%;
   width: 100%;
@@ -117,25 +124,27 @@ const label = [
 
 const CamBlock = ({ isFull, onClick }) => {
   return (
-    <MainBlock>
-      <CamWrapper>
-        {label.map((lb, idx) => (
-          <CamDiv key={idx}>{lb}</CamDiv>
-        ))}
-      </CamWrapper>
-      <CtrlBar>
-        <StyledSpan>CAM : 활주로 1</StyledSpan>
-        <StyledBtn>
-          <MdNavigateBefore />
-        </StyledBtn>
-        <StyledBtn>
-          <MdNavigateNext />
-        </StyledBtn>
-        <SizeCtrl onClick={onClick}>
-          {isFull ? <BsFullscreenExit /> : <BsFullscreen />}
-        </SizeCtrl>
-      </CtrlBar>
-    </MainBlock>
+    <CamBlockWrapper>
+      <MainBlock>
+        <CamWrapper>
+          {label.map((lb, idx) => (
+            <CamDiv key={idx}>{lb}</CamDiv>
+          ))}
+        </CamWrapper>
+        <CtrlBar>
+          <StyledSpan>CAM : 활주로 1</StyledSpan>
+          <StyledBtn>
+            <MdNavigateBefore />
+          </StyledBtn>
+          <StyledBtn>
+            <MdNavigateNext />
+          </StyledBtn>
+          <SizeCtrl onClick={onClick}>
+            {isFull ? <BsFullscreenExit /> : <BsFullscreen />}
+          </SizeCtrl>
+        </CtrlBar>
+      </MainBlock>
+    </CamBlockWrapper>
   );
 };
 

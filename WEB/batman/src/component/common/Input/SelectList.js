@@ -10,16 +10,12 @@ const Wrapper = styled.div`
   margin-top: 0.5rem;
 `;
 
-const SelectList = ({ width, label, value, setValue, list }) => {
-  const handleChange = (event) => {
-    setValue(event.target.value);
-  };
-
-  const minWidth = width ? width : 120;
+const SelectList = ({ myWidth, label, value, handleChange, list }) => {
+  const minWidth = myWidth ? myWidth : 120;
 
   return (
     <Wrapper>
-      <FormControl sx={{ m: 1, minWidth: { minWidth } }}>
+      <FormControl sx={{ m: 1, width: "fit-content", minWidth: { minWidth } }}>
         <InputLabel id="select-line-label">{label}</InputLabel>
         <Select
           labelId="line-name"
@@ -30,8 +26,8 @@ const SelectList = ({ width, label, value, setValue, list }) => {
           label={label}
         >
           {list.map((l, idx) => (
-            <MenuItem key={idx} value={l.value}>
-              {l.label}
+            <MenuItem key={idx} value={l._id}>
+              {l.name}
             </MenuItem>
           ))}
         </Select>

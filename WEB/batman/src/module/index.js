@@ -1,9 +1,11 @@
 import { combineReducers } from "redux";
 
-import fullscreen from './fullscreen';
+import fullscreen from "./fullscreen";
+import runway from "./runway";
 
 const rootReducer = combineReducers({
-    fullscreen
+  fullscreen,
+  runway,
 });
 
 export default rootReducer;

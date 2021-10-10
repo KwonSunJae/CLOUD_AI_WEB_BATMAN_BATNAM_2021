@@ -1,6 +1,7 @@
 import { model, Schema } from "mongoose";
 
 const SectorSchema = new Schema({
+  name: String,
   bomb: Number,
   soundbomb: Number,
   log: {

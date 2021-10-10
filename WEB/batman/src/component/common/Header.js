@@ -1,7 +1,6 @@
-import React, { useState } from "react";
 import styled from "styled-components";
 
-import StartModal from "../home/StartModal";
+import StartModal from "../home/Header/StartModal";
 
 const HeaderWrapper = styled.div`
   width: 10%;
@@ -61,10 +60,7 @@ const StyledButton = styled.button`
   }
 `;
 
-const Header = () => {
-  const [open, setOpen] = useState(false);
-  const onOpen = () => setOpen(true);
-  const onClose = () => setOpen(false);
+const Header = ({ open, onOpen, onClose }) => {
   return (
     <>
       <HeaderWrapper>

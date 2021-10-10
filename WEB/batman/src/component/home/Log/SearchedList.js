@@ -8,11 +8,21 @@ const MainBlock = styled.div`
   width: 95%;
 `;
 
+const SearchedWrapper = styled.div`
+  height: 60%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
+
 const SearchedList = () => {
   return (
-    <MainBlock>
-      <ListTable />
-    </MainBlock>
+    <SearchedWrapper>
+      <MainBlock>
+        <ListTable />
+      </MainBlock>
+    </SearchedWrapper>
   );
 };
 

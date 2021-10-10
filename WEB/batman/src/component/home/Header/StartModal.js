@@ -4,9 +4,9 @@ import Button from "@mui/material/Button";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import Checkbox from "@mui/material/Checkbox";
 
-import ModalBox from "../common/ModalBox";
-import RunWayList from "./RunWayList";
-import DtPicker from "../common/Input/DtPicker";
+import ModalBox from "../../common/ModalBox";
+import RunwayList from "../Runway/RunwayList";
+import DtPicker from "../../common/Input/DtPicker";
 
 const FormWrapper = styled.form`
   display: flex;
@@ -33,7 +33,7 @@ const StartForm = ({ onClose }) => {
   return (
     <FormWrapper>
       <span style={{ fontWeight: "bold", fontSize: "2rem" }}>BATMAN</span>
-      <RunWayList />
+      <RunwayList />
       <DtPicker label={"시작 시각"} />
       <DtPicker label={"종료 시각"} />
       <FormControlLabel control={<Checkbox />} label="현재 시간" />

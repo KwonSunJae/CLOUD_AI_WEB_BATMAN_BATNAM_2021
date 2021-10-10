@@ -5,8 +5,11 @@ import FormControlLabel from "@mui/material/FormControlLabel";
 import Checkbox from "@mui/material/Checkbox";
 
 import ModalBox from "../../common/ModalBox";
-import RunwayList from "../Runway/RunwayList";
+import RunwayList from "../../home/Runway/RunwayList";
 import DtPicker from "../../common/Input/DtPicker";
+
+import { useDispatch, useSelector } from "react-redux";
+import { changeAttr } from "../../../module/start_property";
 
 const FormWrapper = styled.form`
   display: flex;
@@ -29,11 +32,17 @@ const BtnGroup = ({ onClose }) => {
   );
 };
 
-const StartForm = ({ onClose }) => {
+const RunwayListCntr = ({ runwayForm }) => {
+  console.log(runwayForm);
+  const { value, handleChange, list } = runwayForm;
+  return <RunwayList value={value} handleChange={handleChange} list={list} />;
+};
+
+const StartForm = ({ onClose, runwayForm }) => {
   return (
     <FormWrapper>
       <span style={{ fontWeight: "bold", fontSize: "2rem" }}>BATMAN</span>
-      <RunwayList />
+      <RunwayListCntr runwayForm={runwayForm} />
       <DtPicker label={"시작 시각"} />
       <DtPicker label={"종료 시각"} />
       <FormControlLabel control={<Checkbox />} label="현재 시간" />
@@ -43,9 +52,24 @@ const StartForm = ({ onClose }) => {
 };
 
 const StartModal = ({ open, onClose }) => {
+  const dispatch = useDispatch();
+  const form = useSelector((state) => ({
+    form: state.start_property,
+  }));
+
+  const handleChange = (e) => {
+    dispatch(changeAttr({ name: e.target.name, value: e.target.value }));
+  };
+
+  const runwayForm = {
+    value: form.form.runwaySelected,
+    handleChange,
+    list: form.form.runwayList,
+  };
+
   return (
     <ModalBox open={open} onClose={onClose}>
-      <StartForm onClose={onClose} />
+      <StartForm onClose={onClose} runwayForm={runwayForm} />
     </ModalBox>
   );
 };

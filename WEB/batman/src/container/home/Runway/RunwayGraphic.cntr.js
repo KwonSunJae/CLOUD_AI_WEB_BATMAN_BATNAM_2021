@@ -7,6 +7,8 @@ const RunwayGraphicCntr = () => {
     curr: state.runway.curr,
   }));
 
+  console.log(curr);
+
   // const form = {
   //   name: curr.name,
   //   angle_start: curr.angles[0],

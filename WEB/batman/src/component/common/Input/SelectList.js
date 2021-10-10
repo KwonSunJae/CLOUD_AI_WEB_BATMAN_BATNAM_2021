@@ -24,6 +24,7 @@ const SelectList = ({ myWidth, label, value, handleChange, list }) => {
           onChange={handleChange}
           autoWidth
           label={label}
+          name="runwaySelected"
         >
           {list.map((l, idx) => (
             <MenuItem key={idx} value={l._id}>

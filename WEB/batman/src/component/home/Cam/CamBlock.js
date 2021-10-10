@@ -1,5 +1,5 @@
 import React from "react";
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 
 import { MdNavigateBefore, MdNavigateNext } from "react-icons/md";
 import { BsFullscreen, BsFullscreenExit } from "react-icons/bs";
@@ -29,12 +29,44 @@ const CamWrapper = styled.div`
 `;
 
 const CamDiv = styled.div`
-  width: 32.5%;
-  height: 48%;
   display: flex;
   justify-content: center;
   align-items: center;
   background: gray;
+  ${(props) => {
+    switch (props.listSize) {
+      case 1:
+        return css`
+          width: 99%;
+          height: 99%;
+        `;
+      case 2:
+        return css`
+          width: 49%;
+          height: 99%;
+        `;
+      case 3:
+        return css`
+          width: 49%;
+          height: 49%;
+        `;
+      case 4:
+        return css`
+          width: 49%;
+          height: 49%;
+        `;
+      case 5:
+        return css`
+          width: 33%;
+          height: 49%;
+        `;
+      default:
+        return css`
+          width: 33%;
+          height: 49%;
+        `;
+    }
+  }}
 `;
 
 const CtrlBar = styled.div`
@@ -65,23 +97,35 @@ const StyledBtn = styled.button`
   border: none;
   background: none;
   border-radius: 5rem;
-  color: black;
+  color: #ddd;
   font-size: 1.5rem;
 
   display: flex;
   justify-content: center;
   align-items: center;
 
-  &:hover {
-    background: gray;
-  }
-  &:active {
-    background: gray;
-    color: white;
-  }
   & + & {
     margin-left: 1.5rem;
   }
+
+  -webkit-transition: font-size 0.2s ease;
+  -moz-transition: font-size 0.2s ease;
+  -o-transition: font-size 0.2s ease;
+  transition: font-size 0.2s ease;
+
+  ${(props) =>
+    !props.disabled &&
+    css`
+      color: black;
+      &:hover {
+        background: #ddd;
+        font-size: 1.75rem;
+      }
+      &:active {
+        background: gray;
+        color: white;
+      }
+    `}
 `;
 
 const SizeCtrl = styled.button`
@@ -102,10 +146,10 @@ const SizeCtrl = styled.button`
   font-size: 1.5rem;
   font-weight: 500;
 
-  -webkit-transition: font-size 0.5s ease;
-  -moz-transition: font-size 0.5s ease;
-  -o-transition: font-size 0.5s ease;
-  transition: font-size 0.5s ease;
+  -webkit-transition: font-size 0.2s ease;
+  -moz-transition: font-size 0.2s ease;
+  -o-transition: font-size 0.2s ease;
+  transition: font-size 0.2s ease;
 
   &:hover {
     color: black;
@@ -113,30 +157,32 @@ const SizeCtrl = styled.button`
   }
 `;
 
-const label = [
-  "SECTOR A",
-  "SECTOR B",
-  "SECTOR C",
-  "SECTOR D",
-  "SECTOR E",
-  "SECTOR F",
-];
-
-const CamBlock = ({ isFull, onClick }) => {
+const CamBlock = ({ isFull, onClick, runway, page, onPageClick }) => {
+  const { name, sectors } = runway;
+  const { top, bottom } = sectors;
+  const list = top.concat(bottom);
+  const lastPage = Math.floor((list.length - 1) / 6);
   return (
     <CamBlockWrapper>
       <MainBlock>
         <CamWrapper>
-          {label.map((lb, idx) => (
-            <CamDiv key={idx}>{lb}</CamDiv>
+          {list.slice(page * 6, page * 6 + 6).map((l, idx) => (
+            <CamDiv listSize={list.length - page * 6} key={idx}>
+              {l.name}
+            </CamDiv>
           ))}
         </CamWrapper>
         <CtrlBar>
-          <StyledSpan>CAM : 활주로 1</StyledSpan>
-          <StyledBtn>
+          <StyledSpan>
+            {name === "활주로 선택" ? "활주로를 선택하세요" : "CAM : " + name}
+          </StyledSpan>
+          <StyledBtn disabled={page === 0} onClick={() => onPageClick(-1)}>
             <MdNavigateBefore />
           </StyledBtn>
-          <StyledBtn>
+          <StyledBtn
+            disabled={lastPage <= 0 || page === lastPage}
+            onClick={() => onPageClick(1)}
+          >
             <MdNavigateNext />
           </StyledBtn>
           <SizeCtrl onClick={onClick}>

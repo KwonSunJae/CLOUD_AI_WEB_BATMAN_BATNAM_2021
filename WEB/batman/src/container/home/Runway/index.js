@@ -7,6 +7,7 @@ import RunwayListCntr from "./RunwayList.cntr";
 import RunwayModal from "../../../component/home/Runway/RunwayModal";
 import RunwayGraphicCntr from "./RunwayGraphic.cntr";
 
+
 const RunwayBlockWrapper = styled.div`
   height: 30%;
   width: 70%;

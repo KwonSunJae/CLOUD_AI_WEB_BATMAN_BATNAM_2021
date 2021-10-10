@@ -16,11 +16,11 @@ const SearchedWrapper = styled.div`
   align-items: center;
 `;
 
-const SearchedList = () => {
+const SearchedList = ({list}) => {
   return (
     <SearchedWrapper>
       <MainBlock>
-        <ListTable />
+        <ListTable list={list} />
       </MainBlock>
     </SearchedWrapper>
   );

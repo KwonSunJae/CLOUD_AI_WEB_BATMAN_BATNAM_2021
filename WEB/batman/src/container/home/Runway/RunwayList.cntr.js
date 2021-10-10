@@ -11,17 +11,6 @@ const RunwayListCntr = () => {
     runwayList: state.runway.runwayList,
   }));
 
-  let runwayList_added_default = [
-    {
-      name: "활주로 선택",
-      _id: "0",
-    },
-  ];
-
-  runwayList_added_default = runwayList_added_default.concat(runwayList);
-
-  console.log(runwayList_added_default);
-
   const handleChange = (e) => {
     dispatch(add_current(e.target.value));
   };
@@ -30,7 +19,7 @@ const RunwayListCntr = () => {
     <RunwayList
       value={curr._id}
       handleChange={handleChange}
-      list={runwayList_added_default}
+      list={runwayList}
     />
   );
 };

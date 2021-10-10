@@ -75,12 +75,13 @@ const renderArrow = (n) => {
 };
 
 const RunwayGraphic = ({ form }) => {
+  console.log(form);
   const { name, angles, sectors } = form;
   const [angle_start, angle_end] = angles;
   const { top, bottom } = sectors;
   return (
     <>
-      <SectorBlockList list={top.map((s) => s)} />
+      <SectorBlockList list={top.map((s) => s.name)} />
       <ArrowLine>
         <RunwayLabel>{angle_start}</RunwayLabel>
         {renderArrow(2)}
@@ -88,7 +89,7 @@ const RunwayGraphic = ({ form }) => {
         {renderArrow(2)}
         <RunwayLabel>{angle_end}</RunwayLabel>
       </ArrowLine>
-      <SectorBlockList list={bottom.map((s) => s)} />
+      <SectorBlockList list={bottom.map((s) => s.name)} />
     </>
   );
 };

@@ -49,118 +49,13 @@ const formatDate = (date) => {
   return purchaseDay;
 };
 
-const data = [
-  {
-    time: formatDate(new Date()),
-    place: "line 2/A",
-    detected: "Bird",
-    result: "shoot",
-  },
-  {
-    time: formatDate(new Date()),
-    place: "line 1/C",
-    detected: "Bird",
-    result: "shoot",
-  },
-  {
-    time: formatDate(new Date()),
-    place: "line 4/E",
-    detected: "Bird",
-    result: "SoundBoom",
-  },
-  {
-    time: formatDate(new Date()),
-    place: "line 2/A",
-    detected: "Bird",
-    result: "shoot",
-  },
-  {
-    time: formatDate(new Date()),
-    place: "line 1/C",
-    detected: "Bird",
-    result: "shoot",
-  },
-  {
-    time: formatDate(new Date()),
-    place: "line 4/E",
-    detected: "Bird",
-    result: "SoundBoom",
-  },
-  {
-    time: formatDate(new Date()),
-    place: "line 2/A",
-    detected: "Bird",
-    result: "shoot",
-  },
-  {
-    time: formatDate(new Date()),
-    place: "line 1/C",
-    detected: "Bird",
-    result: "shoot",
-  },
-  {
-    time: formatDate(new Date()),
-    place: "line 4/E",
-    detected: "Bird",
-    result: "SoundBoom",
-  },
-  {
-    time: formatDate(new Date()),
-    place: "line 2/A",
-    detected: "Bird",
-    result: "shoot",
-  },
-  {
-    time: formatDate(new Date()),
-    place: "line 1/C",
-    detected: "Bird",
-    result: "shoot",
-  },
-  {
-    time: formatDate(new Date()),
-    place: "line 4/E",
-    detected: "Bird",
-    result: "SoundBoom",
-  },
-  {
-    time: formatDate(new Date()),
-    place: "line 2/A",
-    detected: "Bird",
-    result: "shoot",
-  },
-  {
-    time: formatDate(new Date()),
-    place: "line 1/C",
-    detected: "Bird",
-    result: "shoot",
-  },
-  {
-    time: formatDate(new Date()),
-    place: "line 4/E",
-    detected: "Bird",
-    result: "SoundBoom",
-  },
-  {
-    time: formatDate(new Date()),
-    place: "line 2/A",
-    detected: "Bird",
-    result: "shoot ",
-  },
-  {
-    time: formatDate(new Date()),
-    place: "line 1/C",
-    detected: "Bird",
-    result: "shoot",
-  },
-  {
-    time: formatDate(new Date()),
-    place: "line 4/E",
-    detected: "Bird",
-    result: "SoundBoom",
-  },
-];
-
-const ListTable = () => {
+const ListTable = ({ list }) => {
+  const logList = list.map((d) => ({
+    time: formatDate(d.time),
+    place: d.runway.name + ":" + d.sector.name,
+    finding: d.finding.kinds + "/" + d.finding.number,
+    result: d.reslut ? d.result : null,
+  }));
   return (
     <Paper sx={{ width: "100%", padding: "auto" }}>
       <TableContainer sx={{ maxHeight: "550px" }}>
@@ -188,11 +83,11 @@ const ListTable = () => {
             </TableRow>
           </TableHead>
           <TableBody>
-            {data.map((d, idx) => (
+            {logList.map((d, idx) => (
               <TableRow hover key={idx}>
                 <TableCell>{d.time}</TableCell>
                 <TableCell>{d.place}</TableCell>
-                <TableCell>{d.detected}</TableCell>
+                <TableCell>{d.finding}</TableCell>
                 <TableCell>{d.result}</TableCell>
               </TableRow>
             ))}

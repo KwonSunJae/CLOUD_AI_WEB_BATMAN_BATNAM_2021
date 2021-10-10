@@ -6,6 +6,8 @@ import ModalBox from "../../common/ModalBox";
 import TextInput from "../../common/Input/TextInput";
 import RunwayGraphic from "./RunwayGraphic";
 
+import TestPage from "../../../pages/test";
+
 const FormWrapper = styled.form`
   display: flex;
   flex-flow: column wrap;
@@ -100,7 +102,8 @@ const StartForm = ({ onClose, form, onChange }) => {
 const RunwayModal = ({ open, onClose, form, onChange }) => {
   return (
     <ModalBox open={open} onClose={onClose} width={"60vw"}>
-      <StartForm onClose={onClose} form={form} onChange={onChange} />
+      {/* <StartForm onClose={onClose} form={form} onChange={onChange} /> */}
+      <TestPage />
     </ModalBox>
   );
 };

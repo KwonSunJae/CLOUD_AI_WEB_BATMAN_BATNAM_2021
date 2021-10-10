@@ -1,4 +1,5 @@
 import { createAction, handleActions } from "redux-actions";
+import * as data from "../public/data";
 
 const ADD_RUNWAY = "runway/ADD_RUNWAY";
 const REMOVE_RUNWAY = "runway/REMOVE_RUNWAY";
@@ -14,43 +15,26 @@ export const update_runway = createAction(UPDATE_RUNWAY, (id, r) => ({
 export const add_current = createAction(ADD_CURRENT, (id) => id);
 
 const initState = {
-  runwayList: [
-    {
-      name: "활주로 1",
-      _id: "1",
-      angles: [10, 10],
-      sectors: {
-        top: ["섹터 1", "섹터 1", "섹터 1"],
-        bottom: ["섹터 1", "섹터 1", "섹터 1"],
-      },
-    },
-    {
-      name: "활주로 2",
-      _id: "2",
-      angles: [20, 20],
-      sectors: {
-        top: ["섹터 2", "섹터 2", "섹터 2"],
-        bottom: ["섹터 2", "섹터 2", "섹터 2"],
-      },
-    },
-  ],
+  runwayList: data.runwayList,
   curr: {
-    name: "활주로",
-    _id: "0",
-    angles: [0, 0],
+    name: "활주로 선택",
+    _id: 0,
+    angles: [],
     sectors: {
-      top: ["섹터 0", "섹터 0", "섹터 0"],
-      bottom: ["섹터 0", "섹터 0", "섹터 0"],
+      top: [],
+      bottom: [],
     },
+    logs: [],
   },
   default: {
-    name: "활주로",
-    _id: "0",
-    angles: [0, 0],
+    name: "활주로 선택",
+    _id: 0,
+    angles: [],
     sectors: {
-      top: ["섹터 0", "섹터 0", "섹터 0"],
-      bottom: ["섹터 0", "섹터 0", "섹터 0"],
+      top: [],
+      bottom: [],
     },
+    logs: [],
   },
 };
 

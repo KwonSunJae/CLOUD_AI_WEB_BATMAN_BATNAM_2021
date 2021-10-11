@@ -43,7 +43,7 @@ class IndexView(View):
                                     time = request['time'],
                                     finding = request['finding'],
                                     action = request['action'],
-                                    is_help)
+                                    is_help=is_help)
             birdalert = BirdAlert(photo = request['photo'],
                                     log = request['log'])
         

@@ -7,12 +7,20 @@ import reportWebVitals from "./reportWebVitals";
 import "../node_modules/react-grid-layout/css/styles.css";
 import "../node_modules/react-resizable/css/styles.css";
 
-import { createStore } from "redux";
+import { createStore, applyMiddleware } from "redux";
 import { Provider } from "react-redux";
-import rootReducer from "./module";
+import rootReducer, { rootSaga } from "./module";
 import { composeWithDevTools } from "redux-devtools-extension"; // 리덕스 개발자 도구
+import createSagaMiddleware from "redux-saga";
 
-const store = createStore(rootReducer, composeWithDevTools());
+const sagaMiddleware = createSagaMiddleware();
+
+const store = createStore(
+  rootReducer,
+  composeWithDevTools(applyMiddleware(sagaMiddleware))
+);
+
+sagaMiddleware.run(rootSaga);
 
 ReactDOM.render(
   <React.StrictMode>

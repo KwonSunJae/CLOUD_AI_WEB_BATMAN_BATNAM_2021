@@ -5,7 +5,7 @@ import PageTemplate from "../container/common/PageTemplate.cntr";
 import Cam from "../container/home/Cam";
 import Runway from "../container/home/Runway";
 import LogList from "../container/home/Log";
-import GraphBlock from "../component/home/Graph/GraphBlock";
+import User from "../component/home/User";
 import SideWrapper from "../component/home/SideWrapper";
 
 import * as data from "../public/data";
@@ -14,7 +14,6 @@ const Home = () => {
   const { isFull } = useSelector((state) => ({
     isFull: state.fullscreen.isFull,
   }));
-
   return (
     <PageTemplate>
       {isFull && (
@@ -28,7 +27,7 @@ const Home = () => {
           <Runway />
           <SideWrapper>
             <LogList />
-            <GraphBlock />
+            <User />
           </SideWrapper>
         </>
       )}

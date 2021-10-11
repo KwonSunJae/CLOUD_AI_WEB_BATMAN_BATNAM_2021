@@ -18,6 +18,7 @@ const MainBlock = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
+  position: relative;
 `;
 
 const CamWrapper = styled.div`
@@ -33,6 +34,7 @@ const CamDiv = styled.div`
   justify-content: center;
   align-items: center;
   background: gray;
+  position: relative;
   ${(props) => {
     switch (props.listSize) {
       case 1:
@@ -157,41 +159,116 @@ const SizeCtrl = styled.button`
   }
 `;
 
-const CamBlock = ({ isFull, onClick, runway, page, onPageClick }) => {
+const CamSizeCtrl = styled.button`
+  position: absolute;
+  bottom: 0.5rem;
+  right: 0;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  background: none;
+  color: white;
+  border: none;
+  outline: none;
+  font-size: 1rem;
+  font-weight: 500;
+
+  -webkit-transition: font-size 0.2s ease;
+  -moz-transition: font-size 0.2s ease;
+  -o-transition: font-size 0.2s ease;
+  transition: font-size 0.2s ease;
+
+  &:hover {
+    font-size: 1.25rem;
+  }
+`;
+
+const CamBlock = ({
+  isFull,
+  camSizeAttr,
+  onClick,
+  runway,
+  page,
+  onPageClick,
+}) => {
   const { name, sectors } = runway;
   const { top, bottom } = sectors;
   const list = top.concat(bottom);
   const lastPage = Math.floor((list.length - 1) / 6);
-  return (
-    <CamBlockWrapper>
-      <MainBlock>
-        <CamWrapper>
-          {list.slice(page * 6, page * 6 + 6).map((l, idx) => (
-            <CamDiv listSize={list.length - page * 6} key={idx}>
-              {l.name}
-            </CamDiv>
-          ))}
-        </CamWrapper>
-        <CtrlBar>
-          <StyledSpan>
-            {name === "활주로 선택" ? "활주로를 선택하세요" : "CAM : " + name}
-          </StyledSpan>
-          <StyledBtn disabled={page === 0} onClick={() => onPageClick(-1)}>
-            <MdNavigateBefore />
-          </StyledBtn>
-          <StyledBtn
-            disabled={lastPage <= 0 || page === lastPage}
-            onClick={() => onPageClick(1)}
-          >
-            <MdNavigateNext />
-          </StyledBtn>
-          <SizeCtrl onClick={onClick}>
-            {isFull ? <BsFullscreenExit /> : <BsFullscreen />}
-          </SizeCtrl>
-        </CtrlBar>
-      </MainBlock>
-    </CamBlockWrapper>
-  );
+
+  const { isCamFull, idOfCam, onCamFullSize, onCamBackSize } = camSizeAttr;
+
+  if (isCamFull) {
+    return (
+      <CamBlockWrapper>
+        <MainBlock>
+          <CamWrapper>
+            {list.map((l) => {
+              if (l._id === idOfCam) {
+                return (
+                  <CamDiv listSize={1} key={l._id}>
+                    {l.name}
+                    <CamSizeCtrl>
+                      <BsFullscreenExit onClick={() => onCamBackSize(l._id)} />
+                    </CamSizeCtrl>
+                  </CamDiv>
+                );
+              } else return null;
+            })}
+          </CamWrapper>
+          <CtrlBar>
+            <StyledSpan>
+              {name === "활주로 선택" ? "활주로를 선택하세요" : "CAM : " + name}
+            </StyledSpan>
+            <StyledBtn disabled>
+              <MdNavigateBefore />
+            </StyledBtn>
+            <StyledBtn disabled>
+              <MdNavigateNext />
+            </StyledBtn>
+            <SizeCtrl onClick={onClick}>
+              {isFull ? <BsFullscreenExit /> : <BsFullscreen />}
+            </SizeCtrl>
+          </CtrlBar>
+        </MainBlock>
+      </CamBlockWrapper>
+    );
+  } else
+    return (
+      <CamBlockWrapper>
+        <MainBlock>
+          <CamWrapper>
+            {list.slice(page * 6, page * 6 + 6).map((l, idx) => (
+              <CamDiv listSize={list.length - page * 6} key={idx}>
+                {l.name}
+                <CamSizeCtrl>
+                  <BsFullscreen onClick={() => onCamFullSize(l._id)} />
+                </CamSizeCtrl>
+              </CamDiv>
+            ))}
+          </CamWrapper>
+          <CtrlBar>
+            <StyledSpan>
+              {name === "활주로 선택" ? "활주로를 선택하세요" : "CAM : " + name}
+            </StyledSpan>
+            <StyledBtn disabled={page === 0} onClick={() => onPageClick(-1)}>
+              <MdNavigateBefore />
+            </StyledBtn>
+            <StyledBtn
+              disabled={lastPage <= 0 || page === lastPage}
+              onClick={() => onPageClick(1)}
+            >
+              <MdNavigateNext />
+            </StyledBtn>
+            <SizeCtrl onClick={onClick}>
+              {isFull ? <BsFullscreenExit /> : <BsFullscreen />}
+            </SizeCtrl>
+          </CtrlBar>
+        </MainBlock>
+      </CamBlockWrapper>
+    );
 };
 
 export default CamBlock;

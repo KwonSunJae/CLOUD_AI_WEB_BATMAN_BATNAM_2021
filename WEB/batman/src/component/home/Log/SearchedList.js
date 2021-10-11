@@ -16,7 +16,7 @@ const SearchedWrapper = styled.div`
   align-items: center;
 `;
 
-const SearchedList = ({list}) => {
+const SearchedList = ({ list }) => {
   return (
     <SearchedWrapper>
       <MainBlock>

@@ -57,7 +57,7 @@ const ListTable = ({ list }) => {
     result: d.reslut ? d.result : null,
   }));
   return (
-    <Paper sx={{ width: "100%", padding: "auto" }}>
+    <Paper sx={{ width: "100%", height: "100%", padding: "auto" }}>
       <TableContainer sx={{ maxHeight: "550px" }}>
         <Table stickyHeader aria-label="sticky table">
           <TableHead>

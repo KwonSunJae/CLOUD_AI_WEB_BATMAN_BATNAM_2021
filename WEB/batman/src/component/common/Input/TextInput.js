@@ -1,6 +1,15 @@
 import TextField from "@mui/material/TextField";
 
-const TextInput = ({ label, value, name, onChange, isNumber, fullWidth }) => {
+const TextInput = ({
+  label,
+  value,
+  name,
+  onChange,
+  isNumber,
+  type,
+  fullWidth,
+  mt,
+}) => {
   return (
     <TextField
       id="standard-basic"
@@ -9,8 +18,9 @@ const TextInput = ({ label, value, name, onChange, isNumber, fullWidth }) => {
       value={value}
       name={name}
       onChange={onChange}
-      type={isNumber ? "Number" : ""}
       fullWidth={fullWidth ? true : false}
+      type={type ? type : isNumber ? "Number" : ""}
+      sx={{ mt: mt }}
     />
   );
 };

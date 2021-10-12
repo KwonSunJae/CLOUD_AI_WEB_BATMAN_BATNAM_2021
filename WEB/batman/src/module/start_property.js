@@ -13,6 +13,8 @@ const initState = {
   isNow: false,
 };
 
+// 1. Using Saga to Connect each Action -- !
+
 export default handleActions(
   {
     [CHANGE_ATTR]: (state, { payload: attr }) => ({

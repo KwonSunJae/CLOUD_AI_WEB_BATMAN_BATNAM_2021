@@ -1,13 +1,22 @@
-import { useSelector } from "react-redux";
+import {useEffect} from "react";
+import { useDispatch,useSelector } from "react-redux";
 
 import RunwayGraphic from "../../../component/home/Runway/RunwayGraphic";
 
+import { add_current } from "../../../module/runway";
+
 const RunwayGraphicCntr = () => {
-  const { curr } = useSelector((state) => ({
+  const dispatch = useDispatch();
+  const { curr,isDetect,runway } = useSelector((state) => ({
     curr: state.runway.curr,
+    isDetect:state.detect.isDetect,
+    runway:state.detect.runway
   }));
 
-  console.log(curr);
+  useEffect(()=>{
+    if(runway)
+    dispatch(add_current(runwway._id))
+  },[])
 
   // const form = {
   //   name: curr.name,

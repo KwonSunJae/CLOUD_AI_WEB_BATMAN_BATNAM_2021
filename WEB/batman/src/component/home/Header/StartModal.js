@@ -41,36 +41,57 @@ const RunwayListCntr = ({ runwayForm }) => {
 
 const StartForm = ({ onClose, runwayForm }) => {
 	const dispatch = useDispatch();
-	const [checked, setChecked] = useState(false);
+	const [checked, setChecked] = useState({
+		start: false,
+		end: false,
+	});
+	const { startTime, endTime } = useSelector((state) => ({
+		startTime: state.start_property.startTime,
+		endTime: state.start_property.endTime,
+	}));
 	const handleChange = (name, value) => {
 		dispatch(changeAttr({ name, value }));
 	};
-	const handleCheck = () => {
-		if (checked) dispatch(changeAttr({ name: 'startTime', value: 'now' }));
-		else dispatch(changeAttr({ name: 'startTime', value: null }));
+	const handleCheck = (type) => {
+		if (type === 'start') {
+			if (checked.start) {
+				dispatch(changeAttr({ name: 'startTime', value: Date.now() }));
+				dispatch(changeAttr({ name: 'isNow', value: true }));
+			} else {
+				dispatch(changeAttr({ name: 'startTime', value: null }));
+				dispatch(changeAttr({ name: 'isStartNow', value: false }));
+			}
+		} else {
+			if (checked.end) {
+				dispatch(changeAttr({ name: 'endTime', value: null }));
+				dispatch(changeAttr({ name: 'isEnd', value: false }));
+			} else {
+				dispatch(changeAttr({ name: 'endTime', value: Date.now() }));
+				dispatch(changeAttr({ name: 'i', value: true }));
+			}
+		}
 	};
-	const onCheckChange = () => {
-		setChecked(!checked);
+	const onCheckChange = (type) => {
+		setChecked({ ...checked, [type]: !checked[type] });
 	};
 
-	useEffect(()=>{
-		handleCheck();
-	},[checked])
-	
+	useEffect(() => {
+		handleCheck('start');
+	}, [checked.start]);
+
+	useEffect(() => {
+		handleCheck('end');
+	}, [checked.end]);
+
 	return (
 		<FormWrapper>
 			<span style={{ fontWeight: 'bold', fontSize: '2rem' }}>BATMAN</span>
 			<RunwayListCntr runwayForm={runwayForm} />
-			<DtPicker
-				label={'시작 시각'}
-				name="startTime"
-				value={runwayForm.startTime}
-				setValue={handleChange}
-			/>
-			<DtPicker label={'종료 시각'} />
+			<DtPicker label={'시작 시각'} name="startTime" value={startTime} setValue={handleChange} />
+			<DtPicker label={'종료 시각'} name="endTime" value={endTime} setValue={handleChange} />
 			<FormControlLabel
-				control={<Checkbox checked={checked} onChange={onCheckChange} />}
-				label="현재 시간"
+				control={<Checkbox checked={checked.start} onChange={() => onCheckChange('start')} />}
+				label="지금 시작"
 			/>
 			<BtnGroup onClose={onClose} />
 		</FormWrapper>

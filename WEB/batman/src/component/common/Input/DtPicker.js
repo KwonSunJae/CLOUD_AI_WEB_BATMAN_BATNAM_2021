@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import TextField from '@mui/material/TextField';
 import AdapterDateFns from '@mui/lab/AdapterDateFns';
 import LocalizationProvider from '@mui/lab/LocalizationProvider';
@@ -9,7 +8,7 @@ const DtPicker = ({ label, value,name, setValue }) => {
 	return (
 		<LocalizationProvider dateAdapter={AdapterDateFns}>
 			<DateTimePicker
-				renderInput={(props) => <TextField {...props} />}
+				renderInput={(props) => <TextField {...props}/>}
 				label={dtlabel}
 				name={name}
 				value={value}

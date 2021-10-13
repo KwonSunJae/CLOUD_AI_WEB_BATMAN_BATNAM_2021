@@ -15,8 +15,9 @@ const RunwayGraphicCntr = () => {
 
   useEffect(()=>{
     if(runway)
-    dispatch(add_current(runwway._id))
-  },[])
+    dispatch(add_current(runway._id))
+  },[runway,dispatch])
+	// 감시중이면 current에 추가해줌
 
   // const form = {
   //   name: curr.name,

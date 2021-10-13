@@ -10,4 +10,8 @@ const api = new Router();
 // api.use("/runway", log.routes());
 api.use("/sector", sector.routes());
 
+api.get("/test",ctx=>{
+	ctx.body = "test";
+})
+
 export default api;

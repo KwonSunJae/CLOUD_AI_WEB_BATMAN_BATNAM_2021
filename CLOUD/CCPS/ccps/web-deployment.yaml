@@ -30,7 +30,7 @@ spec:
             - manage.py
             - runserver
             - 0.0.0.0:8000
-          image: web
+          image: docker.io/ksun4131/django-ccps
           name: web
           ports:
             - containerPort: 8000

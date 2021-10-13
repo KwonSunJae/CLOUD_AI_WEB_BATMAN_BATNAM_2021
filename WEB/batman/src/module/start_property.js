@@ -10,7 +10,8 @@ const initState = {
 	runwaySelected: 0,
 	startTime: null,
 	endTime: null,
-	isNow: false,
+	isStartNow: false,
+	isEnd:false,
 };
 
 // 1. Using Saga to Connect each Action -- !

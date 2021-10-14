@@ -76,7 +76,7 @@ while True:
 	# if the frame dimensions are empty, grab them
 	if W is None or H is None:
 		(H, W) = frame.shape[:2]
-		s_y, s_x, s_w, s_h = cv2.selectROI("Frame", frame)
+		s_y, s_x, s_w, s_h = cv2.selectROI("Frame", frame) # 마우스로 탐지 범위 지정
 		w_ratio = float(s_w) / W
 		h_ratio = float(s_h) / H
 		print(H, W)
@@ -174,6 +174,7 @@ while True:
 		# loop over the indexes we are keeping
 		for i in idxs.flatten():
 			# extract the bounding box coordinates
+			# 탐지 범위 좌표를 전체 출력 영상 범위에 맞게 좌표 조정
 			(x, y) = (boxes[i][0]*w_ratio + s_y, boxes[i][1]*h_ratio + s_x)
 			(w, h) = (boxes[i][2]*w_ratio, boxes[i][3]*h_ratio)
 
@@ -186,6 +187,7 @@ while True:
 				cv2.FONT_HERSHEY_SIMPLEX, 0.5, color, 2)
 	else:
 		prevImg = None
+	# 탐지 결과를 비디오로 저장
 	# check if the video writer is None
 	'''if writer is None:
 		# initialize our video writer
@@ -198,7 +200,7 @@ while True:
 	# write the output frame to disk
 	writer.write(frame)'''
 	# show the output frame
-	cv2.imshow("Frame", frame)
+	cv2.imshow("Frame", frame) # 동영상 출력 부분
 	key = cv2.waitKey(1) & 0xFF
 	#print ("key", key)
 	# if the `q` key was pressed, break from the loop

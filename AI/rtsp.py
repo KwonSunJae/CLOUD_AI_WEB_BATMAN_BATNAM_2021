@@ -12,11 +12,11 @@ from imutils.video import VideoStream
 
 
 #RTSP_URL="rtsp://batman:batnam@112.173.79.62:8554/cctv1"
-RTSP_URL="./darknet/birds.mp4"
-CFG_PATH="./darknet/cfg"
-WEIGHT_PATH="./darknet/backup"
-DATA_PATH="./darknet/data"
-OUTPUT_FILE="./darknet/outfile.avi"
+RTSP_URL="./birds.mp4"
+CFG_PATH="./cfg"
+WEIGHT_PATH="./backup"
+DATA_PATH="./data"
+OUTPUT_FILE="./outfile.avi"
 # load the COCO class labels our YOLO model was trained on
 labelsPath = os.path.sep.join([DATA_PATH, "obj.names"])
 LABELS = open(labelsPath).read().strip().split("\n")
@@ -53,12 +53,12 @@ writer = None
 (W, H) = (None, None)
 
 cnt=0
-s_x = None
-s_y = None
-s_w = None
-s_h = None
-w_ratio = None
-h_ratio = None
+s_x = None #지정 범위 세로 위치
+s_y = None #지정 범위 가로 위치
+s_w = None #지정 범위 너비
+s_h = None #지정 범위 높이
+w_ratio = None #전체 프레임과 너비의 비
+h_ratio = None #전체 프레임과 높이의 비
 
 # loop over frames from the video file stream
 while True:

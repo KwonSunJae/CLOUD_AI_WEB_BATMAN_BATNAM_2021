@@ -1,0 +1,27 @@
+# docker-compose.yml
+version: '3'
+services:
+
+    nginx:
+        container_name: nginx
+        #build: ./nginx
+        image: docker.io/ksun4131/nginx-ccps
+        restart: always
+        ports:
+          - "80:80"
+        volumes:
+          - ./ccps:/srv/ccps
+        depends_on:
+          - django
+        labels:
+          kompose.service.type: LoadBalancer
+
+    django:
+        container_name: django-ccps
+        #build: ./ccps
+        image: docker.io/ksun4131/django-ccps
+        restart: always
+        command: uwsgi --ini uwsgi.ini
+        volumes:
+          - ./ccps:/srv/ccps
+          - ./log:/var/log/uwsgi

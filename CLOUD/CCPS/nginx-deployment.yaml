@@ -2,7 +2,8 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   annotations:
-    kompose.cmd: kompose convert
+    kompose.cmd: kompose convert --volumes emptyDir
+    kompose.service.type: LoadBalancer
     kompose.version: 1.24.0 (4a2a0458)
   creationTimestamp: null
   labels:
@@ -18,29 +19,24 @@ spec:
   template:
     metadata:
       annotations:
-        kompose.cmd: kompose convert
+        kompose.cmd: kompose convert --volumes emptyDir
+        kompose.service.type: LoadBalancer
         kompose.version: 1.24.0 (4a2a0458)
       creationTimestamp: null
       labels:
         io.kompose.service: nginx
     spec:
       containers:
-        - image: nginx:latest
+        - image: docker.io/ksun4131/nginx-ccps
           name: nginx
           ports:
             - containerPort: 80
           resources: {}
           volumeMounts:
-            - mountPath: /code
-              name: nginx-claim0
-            - mountPath: /etc/nginx.conf.d
-              name: nginx-claim1
+            - mountPath: /srv/ccps
+              name: nginx-empty0
       restartPolicy: Always
       volumes:
-        - name: nginx-claim0
-          persistentVolumeClaim:
-            claimName: nginx-claim0
-        - name: nginx-claim1
-          persistentVolumeClaim:
-            claimName: nginx-claim1
+        - emptyDir: {}
+          name: nginx-empty0
 status: {}

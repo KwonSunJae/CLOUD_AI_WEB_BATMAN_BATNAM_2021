@@ -25,8 +25,8 @@ SECRET_KEY = 'django-insecure-=dt5uu9dk_y177160_ev(=!n9%0)3_l#u3&%%u8@ib-fmm@9(z
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
-
+ALLOWED_HOSTS = ['*']
+STATIC_ROOT = "/ccps/.static_root"
 
 # Application definition
 

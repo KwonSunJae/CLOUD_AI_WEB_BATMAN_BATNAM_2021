@@ -1,0 +1,46 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  annotations:
+    kompose.cmd: kompose convert --volumes emptyDir
+    kompose.version: 1.24.0 (4a2a0458)
+  creationTimestamp: null
+  labels:
+    io.kompose.service: django
+  name: django
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      io.kompose.service: django
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      annotations:
+        kompose.cmd: kompose convert --volumes emptyDir
+        kompose.version: 1.24.0 (4a2a0458)
+      creationTimestamp: null
+      labels:
+        io.kompose.service: django
+    spec:
+      containers:
+        - image: docker.io/ksun4131/django-ccps
+          imagePullPolicy: Always
+          name: django-ccps
+          volumeMounts:
+            - mountPath: /srv/ccps
+              name: django-empty0
+            - mountPath: /var/log/uwsgi
+              name: django-empty0
+          args:
+            - uwsgi
+            - --ini
+            - /srv/ccps/ccps/uwsgi.ini
+          
+      restartPolicy: Always
+      volumes:
+        - emptyDir: {}
+          name: django-empty0
+        
+status: {}

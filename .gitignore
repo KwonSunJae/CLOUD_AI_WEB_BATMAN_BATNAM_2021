@@ -5,3 +5,5 @@ AI/
 node_modules/
 todo.md
 /CLOUD[BACK_END]/ai_ccps/ai/backup/
+CLOUD[BACK_END]/ai_ccps/ai/backup/yolov4-obj.weights
+CLOUD[BACK_END]/ai_ccps/ai/backup/yolov4-tiny_best.weights

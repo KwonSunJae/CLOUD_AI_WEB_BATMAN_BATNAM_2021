@@ -1,0 +1,5 @@
+Django
+imutils
+requests
+opencv-python
+numpy

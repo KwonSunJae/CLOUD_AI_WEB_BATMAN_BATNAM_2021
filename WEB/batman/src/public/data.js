@@ -108,7 +108,7 @@ const userData = {
 export const check = (form) => {
   if (form.id === userData.id) {
     if (form.pw === userData.pw) {
-      return { data: form };
+      return { data: userData.id };
     } else {
       throw "Pw is Invalid";
     }

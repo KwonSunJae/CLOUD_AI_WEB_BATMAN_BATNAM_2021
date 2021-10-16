@@ -1,5 +1,7 @@
 import styled from "styled-components";
 import { IoArrowForwardCircle } from "react-icons/io5";
+import { RiZzzFill } from "react-icons/ri";
+
 import HoverTooltips from "../../common/HoverTooltips";
 
 const ArrowLine = styled.div`
@@ -48,6 +50,11 @@ const SectorBlock = styled.div`
   padding-bottom: 0.5rem;
 `;
 
+const NotSelected = styled.div`
+  font-size: 2rem;
+  font-weight: bolder;
+`;
+
 const SectorItem = ({ label }) => {
   return (
     <HoverTooltips message={label + "'s Information!"}>
@@ -79,6 +86,18 @@ const RunwayGraphic = ({ form }) => {
   const { name, angles, sectors } = form;
   const [angle_start, angle_end] = angles;
   const { top, bottom } = sectors;
+
+  if (name === "활주로 선택") {
+    return (
+      <>
+        <NotSelected>
+          {"활주로를 선택해주세요 "}
+          <RiZzzFill />
+        </NotSelected>
+      </>
+    );
+  }
+
   return (
     <>
       <SectorBlockList list={top.map((s) => s.name)} />

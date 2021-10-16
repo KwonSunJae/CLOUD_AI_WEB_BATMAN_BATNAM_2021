@@ -1,13 +1,18 @@
 import Router from "koa-router";
 
-// import log from "./log";
-// import runway from "./runway";
 import sector from "./sector";
+import runway from "./runway";
+import log from "./log";
+import auth from "./auth";
+
+import checkLoggedIn from "../lib/checkLoggedIn";
 
 const api = new Router();
 
-// api.use("/log", log.routes());
-// api.use("/runway", log.routes());
-api.use("/sector", sector.routes());
+api.use("/sector", checkLoggedIn, sector.routes());
+api.use("/runway",  checkLoggedIn, runway.routes());
+api.use("/log",  checkLoggedIn, log.routes());
+
+api.use("/auth",auth.routes());
 
 export default api;

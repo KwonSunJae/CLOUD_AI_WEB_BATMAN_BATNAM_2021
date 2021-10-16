@@ -6,6 +6,7 @@ import runway from "./runway";
 import log from "./log";
 import start_property from "./start_property";
 import login, { loginSaga } from "./login";
+import detect from "./detect";
 
 const rootReducer = combineReducers({
   fullscreen,
@@ -13,6 +14,7 @@ const rootReducer = combineReducers({
   log,
   start_property,
   login,
+	detect
 });
 
 export function* rootSaga() {

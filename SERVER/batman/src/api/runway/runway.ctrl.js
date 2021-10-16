@@ -24,8 +24,11 @@ export const read = async ( ctx ) => {
 	const {_id} = ctx.params;
 	try{
 		const runway = await Runway.findOne({_id}).exec();
-		if(!runway)
+		if(!runway){
+			ctx.status = 404;
 			ctx.body = "No Runway";
+			return;
+		}
 		ctx.body = runway;
 	} catch (e){
 		ctx.body = e;
@@ -52,5 +55,13 @@ export const remove = async ( ctx ) => {
 		ctx.status=400;
 	}
 }
-
 // basic CRUD
+
+export const list = async (ctx) => {
+	try{
+		const runways = await Runway.find().exec();
+		ctx.body = runways;
+	} catch(e){
+		ctx.throw(500,e);
+	}
+}

@@ -11,12 +11,15 @@ import {
 
 const Cam = () => {
   const [page, setPage] = useState(0);
-  const { currRunway, isFull, isCamFull, idOfCam } = useSelector((state) => ({
-    currRunway: state.runway.curr,
-    isFull: state.fullscreen.isFull,
-    isCamFull: state.fullscreen.isCamFull,
-    idOfCam: state.fullscreen.idOfCam,
-  }));
+  const { currRunway, isFull, isCamFull, idOfCam, isLogin } = useSelector(
+    (state) => ({
+      currRunway: state.runway.curr,
+      isFull: state.fullscreen.isFull,
+      isCamFull: state.fullscreen.isCamFull,
+      idOfCam: state.fullscreen.idOfCam,
+      isLogin: state.login.isLogin,
+    })
+  );
 
   const dispatch = useDispatch();
 
@@ -50,6 +53,7 @@ const Cam = () => {
   return (
     <CamBlock
       isFull={isFull}
+      isLogin={isLogin}
       camSizeAttr={camSizeAttr}
       onClick={onClick}
       runway={currRunway}

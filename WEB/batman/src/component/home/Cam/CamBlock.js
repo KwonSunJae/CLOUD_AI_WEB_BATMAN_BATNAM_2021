@@ -1,10 +1,11 @@
 import React from "react";
 import styled, { css } from "styled-components";
-
 import { MdNavigateBefore, MdNavigateNext } from "react-icons/md";
 import { BsFullscreen, BsFullscreenExit } from "react-icons/bs";
+import { RiZzzFill } from "react-icons/ri";
 
 const CamBlockWrapper = styled.div`
+  position: relative;
   flex: 1;
   display: flex;
   justify-content: center;
@@ -185,8 +186,14 @@ const CamSizeCtrl = styled.button`
   }
 `;
 
+const NotSelected = styled.div`
+  font-size: 2rem;
+  font-weight: bolder;
+`;
+
 const CamBlock = ({
   isFull,
+  isLogin,
   camSizeAttr,
   onClick,
   runway,
@@ -205,6 +212,12 @@ const CamBlock = ({
       <CamBlockWrapper>
         <MainBlock>
           <CamWrapper>
+            {name === "활주로 선택" && (
+              <NotSelected>
+                {"활주로를 선택해주세요"}
+                <RiZzzFill />
+              </NotSelected>
+            )}
             {list.map((l) => {
               if (l._id === idOfCam) {
                 return (
@@ -240,6 +253,12 @@ const CamBlock = ({
       <CamBlockWrapper>
         <MainBlock>
           <CamWrapper>
+            {name === "활주로 선택" && (
+              <NotSelected>
+                {"활주로를 선택해주세요"}
+                <RiZzzFill />
+              </NotSelected>
+            )}
             {list.slice(page * 6, page * 6 + 6).map((l, idx) => (
               <CamDiv listSize={list.length - page * 6} key={idx}>
                 {l.name}

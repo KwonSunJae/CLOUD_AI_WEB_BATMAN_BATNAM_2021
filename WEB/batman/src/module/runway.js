@@ -14,6 +14,9 @@ export const update_runway = createAction(UPDATE_RUNWAY, (id, r) => ({
 }));
 export const add_current = createAction(ADD_CURRENT, (id) => id);
 
+// saga 처리 해야함
+// server 연결 확인
+
 const initState = {
   runwayList: data.runwayList,
   curr: {

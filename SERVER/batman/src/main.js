@@ -5,6 +5,7 @@ import bodyParser from "koa-bodyparser";
 import mongoose from "mongoose";
 
 import api from "./api";
+import jwtMiddleware from "./lib/jwtMiddleware";
 
 dotenv.config();
 
@@ -17,6 +18,7 @@ mongoose.connect(URI, () => {
 const app = new Koa();
 
 app.use(bodyParser());
+app.use(jwtMiddleware);
 
 const router = new Router();
 

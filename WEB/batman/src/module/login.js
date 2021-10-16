@@ -1,7 +1,9 @@
 import { createAction, handleActions } from 'redux-actions';
-import { put, takeLatest } from 'redux-saga/effects';
+import { put, call, takeLatest } from 'redux-saga/effects';
 
 import { check, logout } from '../public/data';
+
+import * as auth from "../api/auth";
 
 const TRY_LOG_IN = 'login/TRY_LOG_IN';
 const TRY_LOG_OUT = 'login/TRY_LOG_OUT';
@@ -25,23 +27,25 @@ const initState = {
 
 function* tryLoginSaga(action) {
 	const form = action.payload;
+	console.log(form);
 	try {
-		const res = check(form);
+		const res = yield call(auth.login,{username:form.username,password:form.password});
 		yield put({
 			type: LOGIN_SUCCESS,
-			payload: res.data,
+			payload: res.data, 
 		});
 	} catch (e) {
+		console.log(e);
 		yield put({
 			type: LOGIN_FAILED,
-			payload: e,
+			payload: e.context,
 		});
 	}
 }
 
 function* tryLogOutSaga() {
 	try {
-		logout();
+		const res = yield call(auth.logout);
 		yield put({
 			type: LOGOUT_SUCCESS,
 		});
@@ -65,7 +69,7 @@ function* checkLoginSaga() {
 
 function loginSuccessSaga(action) {
 	const user = action.payload;
-	if (!window.sessionStorage.getItem('user')) window.sessionStorage.setItem('user', user.id);
+	if (!window.sessionStorage.getItem('user')) window.sessionStorage.setItem('user', user);
 }
 
 function logoutSuccessSaga() {

@@ -40,8 +40,8 @@ const ErrMsg = styled.div`
 
 const Login = () => {
   const [form, setForm] = useState({
-    id: "",
-    pw: "",
+    username: "",
+    password: "",
   });
   const dispatch = useDispatch();
 
@@ -74,16 +74,16 @@ const Login = () => {
       <StyledForm onSubmit={onSubmit}>
         <StyledInput
           label="아이디"
-          value={form.id}
-          name="id"
+          value={form.username}
+          name="username"
           onChange={onChange}
           fullWidth
         />
         <StyledInput
           mt={"0.5rem"}
           label="비밀번호"
-          value={form.pw}
-          name="pw"
+          value={form.password}
+          name="password"
           onChange={onChange}
           type="password"
           fullWidth

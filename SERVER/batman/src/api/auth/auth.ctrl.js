@@ -24,9 +24,8 @@ export const register = async (ctx) => {
 
 export const login = async (ctx) => {
 	const {username,password} = ctx.request.body;
-	
 	if(!username || !password){
-		ctx.status = 401;
+		ctx.status = 400;
 		return;
 	}
 	
@@ -34,14 +33,14 @@ export const login = async (ctx) => {
 		const user = await User.findByUsername(username);
 		
 		if(!user){
-			ctx.status = 401;
+			ctx.throw(400,"Id is invalid");
 			return;
 		}
 		
 		const isValid = await user.checkPassword(password);
 		
 		if(!isValid){
-			ctx.status = 401;
+			ctx.throw(400,"Pw is invalid")
 			return;
 		}
 		

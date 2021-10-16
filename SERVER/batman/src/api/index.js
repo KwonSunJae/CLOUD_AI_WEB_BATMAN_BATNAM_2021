@@ -15,4 +15,9 @@ api.use("/log",  checkLoggedIn, log.routes());
 
 api.use("/auth",auth.routes());
 
+api.get("/test",ctx=>{
+	console.log("test");
+	ctx.body = "test";
+})
+
 export default api;

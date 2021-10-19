@@ -1,0 +1,40 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: demo-web
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: demo-web
+  template:
+    metadata:
+      name: demo-web
+      labels: 
+        app: demo-web
+    spec:
+      hostname: batman
+      subdomain: demo-web
+      containers:
+      - name: demo-web
+        image: docker.io/ksun4131/demo-web
+        command: ['python3']
+        args: ['manage.py', 'runserver', '0.0.0.0:80']
+        ports:
+        - containerPort: 80
+        
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: svc-demo-web
+spec:
+  ports:
+  - name: svc-demo-web
+    port: 80
+    targetPort: 80
+    protocol: TCP
+  selector:
+    app: demo-web
+  type: LoadBalancer

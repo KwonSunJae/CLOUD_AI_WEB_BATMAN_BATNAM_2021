@@ -8,7 +8,7 @@ import os
 import threading
 from imutils.video import FPS
 from queue import Queue
-
+import requests
 def Do_yolo(rtsp,runway,sector,que):
 	RTSP_URL=rtsp
 
@@ -213,7 +213,7 @@ def Do_yolo(rtsp,runway,sector,que):
 		fps.update()
 		if Detect_f:
 			cur_time = time.time()
-			if cur_time-prev_time <5:
+			if cur_time-prev_time <1:
 				continue
 			print(str(bird_dec) )
 			print("Detected!")
@@ -223,6 +223,9 @@ def Do_yolo(rtsp,runway,sector,que):
 				'sector': sector,
 				'finding': bird_dec
 			}
+			urls ='http://batman.demo-web.default.svc.cluster.local/demo'
+			res = requests.post(urls, data=data)
+			HttpResponse(res)
 			q.put((data,evt))
 			evt.wait()
 			prev_time= cur_time

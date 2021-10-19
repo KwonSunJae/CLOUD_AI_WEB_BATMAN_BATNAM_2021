@@ -1,13 +1,23 @@
-import { useSelector } from "react-redux";
+import {useEffect} from "react";
+import { useDispatch,useSelector } from "react-redux";
 
 import RunwayGraphic from "../../../component/home/Runway/RunwayGraphic";
 
+import { add_current } from "../../../module/runway";
+
 const RunwayGraphicCntr = () => {
-  const { curr } = useSelector((state) => ({
+  const dispatch = useDispatch();
+  const { curr,isDetect,runway } = useSelector((state) => ({
     curr: state.runway.curr,
+    isDetect:state.detect.isDetect,
+    runway:state.detect.runway
   }));
 
-  console.log(curr);
+  useEffect(()=>{
+    if(runway)
+    dispatch(add_current(runway._id))
+  },[runway,dispatch])
+	// 감시중이면 current에 추가해줌
 
   // const form = {
   //   name: curr.name,

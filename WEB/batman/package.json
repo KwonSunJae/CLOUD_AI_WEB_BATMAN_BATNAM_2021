@@ -10,7 +10,7 @@
     "@testing-library/jest-dom": "^5.11.4",
     "@testing-library/react": "^11.1.0",
     "@testing-library/user-event": "^12.1.10",
-    "axios": "^0.21.4",
+    "axios": "^0.23.0",
     "chart.js": "^3.5.1",
     "date-fns": "^2.24.0",
     "open-color": "^1.9.1",
@@ -55,5 +55,7 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  }
+  },
+	  "proxy": "https://batman-server.run.goorm.io"
+
 }

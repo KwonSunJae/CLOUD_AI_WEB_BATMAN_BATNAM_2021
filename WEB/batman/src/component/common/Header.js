@@ -60,7 +60,7 @@ const StyledButton = styled.button`
   }
 `;
 
-const Header = ({ open, onOpen, onClose }) => {
+const Header = () => {
   return (
     <>
       <HeaderWrapper>
@@ -70,8 +70,6 @@ const Header = ({ open, onOpen, onClose }) => {
           <StyledButton>통계실</StyledButton>
           <StyledButton>상황실</StyledButton>
           <StyledButton>통제실</StyledButton>
-          <StyledButton onClick={onOpen}>시작하기</StyledButton>
-          <StartModal open={open} onClose={onClose} />
         </StyledNavBar>
       </HeaderWrapper>
     </>

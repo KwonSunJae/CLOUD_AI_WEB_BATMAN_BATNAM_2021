@@ -7,6 +7,7 @@ class IndexView(View):
         sector = request.POST['sector']
         bid_dec = request.POST['finding']
         response = "runway: " + runway ", sector: " + sector + ", number of birds: "+ bid_dec + "batman detect!"
+        print(response)
         return HttpResponse(response)
 
     

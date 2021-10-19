@@ -1,9 +1,29 @@
+apiVersion: autoscaling/v2beta1
+kind: HorizontalPodAutoscaler
+metadata:
+  name: ai-ccps
+  labels:
+    app: ai-ccps
+spec:
+  minReplicas: 2
+  maxReplicas: 10
+
+  metrics:
+  - resource:
+      name: cpu
+      targetAverageUtilization: 70
+    type: Resource
+  scaleTargetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: ai-ccps
+---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: ai-ccps
 spec:
-  replicas: 3
+  replicas: 2
   selector:
     matchLabels:
       app: ai-ccps
@@ -13,6 +33,8 @@ spec:
       labels: 
         app: ai-ccps
     spec:
+      hostname: batman
+      subdomain: ai-ccps
       containers:
       - name: ai-ccps
         image: docker.io/ksun4131/django-ai
@@ -20,6 +42,13 @@ spec:
         args: ['manage.py', 'runserver', '0.0.0.0:80']
         ports:
         - containerPort: 80
+        resources:
+          limits:
+            cpu: 2000m
+            memory: 4000M
+          requests:
+            cpu: 1500m
+            memory: 3500M
 ---
 apiVersion: v1
 kind: Service

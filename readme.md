@@ -123,6 +123,7 @@ $ kubectl apply -f ai_deployment.yaml,demo_deployment.yaml
 
 - Kwon Sun Jae (ksun4131@gmail.com), Github Id: KwonSunJae
 - 천성필 (philip000412@gmail.com), Github Id : popopy0412
+- 안재민 (anjm1020@gmail.com), Github Id : GitJaeMin
 
 ## 저작권 및 사용권 정보 (Copyleft / End User License)
 

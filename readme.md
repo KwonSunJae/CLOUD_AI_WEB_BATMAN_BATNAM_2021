@@ -115,7 +115,7 @@ $ kubectl apply -f ai_deployment.yaml,demo_deployment.yaml
 ## 팀 정보 (Team Information)
 
 - Kwon Sun Jae (ksun4131@gmail.com), Github Id: KwonSunJae
-
+- 천성필 (philip000412@gmail.com), Github Id : sw19_sungpil
 
 ## 저작권 및 사용권 정보 (Copyleft / End User License)
 
